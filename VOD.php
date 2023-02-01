@@ -3,18 +3,19 @@
 class VOD {
     public array $films;
     public $tarifs;
-    private static $followers;
+    public static array $followers = [];
 
-    public function addFollo(VOD $abo){
-        self::$followers = $abo;
+    public function addUser($user): void
+    {
+        self::$followers[] = $user;
     }
 
-    public function getFollo(): array{
-        $abo = [];
-        foreach (self::$followers as $abo){
-            $abo[] = $abo->get->getNom() . " " . $abo->getPrenom();
+    public function getUser(): array {
+        $users = [];
+        foreach (self::$followers as $user) {
+            $users[] = $user->getFollowers();
         }
-        return $abo;
+        return $users;
     }
 
     /**
@@ -50,17 +51,17 @@ class VOD {
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public static function getFollowers()
+    public static function getFollowers(): array
     {
         return self::$followers;
     }
 
     /**
-     * @param mixed $followers
+     * @param array $followers
      */
-    public static function setFollowers($followers): void
+    public static function setFollowers(array $followers): void
     {
         self::$followers = $followers;
     }

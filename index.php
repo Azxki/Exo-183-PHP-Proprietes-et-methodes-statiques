@@ -23,8 +23,11 @@ require "VOD.php";
 $netflix = new VOD();
 $prime = new VOD();
 
-$netflix->addFollo()
-        ->addFollo()
-        ->addFollo()
-;
+$netflix->addUser('Joe');
+$netflix->addUser('Sarah');
+$netflix->addUser('John');
 
+echo "<br> Pour les utilisateurs : <br>";
+foreach ($netflix as $users){
+    echo $users . "<br>";
+}
